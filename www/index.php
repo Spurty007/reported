@@ -159,7 +159,7 @@ Scituate         Blue
 
 In case of color clash, home team wears pinnies
 </pre>
-<a href="https://docs.google.com/spreadsheets/d/1H1WWeQgPW_unliT_moChv629j2ACWAO8Oia885jLquA/edit#gid=0">Coach contacts</a>
+<a href="Whoops">Coach contacts</a>
 <?php  echo "<h5>Today is <b>" . date("Y-m-d") . "</b></h5>"; ?>
 </body>
 </html>
