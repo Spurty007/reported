@@ -8,7 +8,20 @@ The following commandline is for a Ubuntu OS - please correct for your distro:
 # apt install nginx php-fpm postfix certbot
 </pre>
 
-Once done, please clone this project into /var/www/html
+Once done, please clone this project and drop the reported/www contents into /var/www/html
+
+Your /var/www/html should look like so:
+
+ <pre>
+# cd /var/www/html
+# find .
+.
+./i/bg.gif
+./i/hhawks.gif
+./i/style.css
+./index.php
+./index.html
+ </pre>
 
 ## Configure webservice
 
