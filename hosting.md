@@ -1,18 +1,19 @@
 # Self Hosted setup
-I'm using a Raspberry Pi to host this. 
+I've used a Raspberry Pi to host this over the last 4 years (different domains, but same hardware). Usage is very very light. 10~30 form posts a week for each season.
 
-You also need a Google Mail account 
+Access to a Google e-mail account is recommended (and what I configure in these docs)
 
-Installing the following (Ubuntu used as an example)
+The following commandline is for a Ubuntu OS - please correct for your distro:
 <pre>
 # apt install nginx php-fpm postfix certbot
 </pre>
 
+Once done, please clone this project into /var/www/html
+
 ## Configure webservice
 
-Drop the contents of this project into /var/www/html
+Ensure your /etc/nginx/sites-enabled/default looks something like so:
 
-Your /etc/nginx/sites-enabled/default
 <pre>
 server {
     listen 80 default_server;
@@ -32,7 +33,7 @@ Assumes you have a cert and FQDN. If you do not have this, you can skip this ste
 # certbot --certonly
 </pre>
 
-After adding Certbot and running it, your web service file should contain a new block like so:
+After adding Certbot and running it, your /etc/nginx/sites-enabled/default file should contain a new block like so:
 
 <pre>
 server {
@@ -51,6 +52,7 @@ server {
     }
 }
 </pre>
+
 ## Install & Configure Postfix
 Instead of re-inventing the wheel, just going to point you off to the [docs I used](https://linuxscriptshub.com/configure-smtp-with-gmail-using-postfix/)
 
