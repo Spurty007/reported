@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="HYAA Soccer Score reporter" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<meta content="user-scalable=no, width=device-width" name="viewport">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"> </script>
+<link rel="stylesheet" href="i/style.css">
+<meta charset='UTF-8'>
+<!-- TO DO REFACTOR - should just be a 'for loop' and not 3 versions -->
+<script>
+    $(function() {
+        var $dropdown = $(this);
+        $.getJSON("Town.json", function(data) {
+            var key = 'Town'; var vals = []; vals = data.Town.split(","); var $Town = $("#t1b");
+            $Town.empty();
+            $.each(vals, function(index, value) {$Town.append("<option>" + value + "</option>");});
+        });
+    });
+</script>
+<script>
+    $(function() {
+        var $dropdown = $(this);
+        $.getJSON("Team.json", function(data) {
+            var key = 'Team';var vals = [];vals = data.Team.split(","); var $Team = $("#t2b");
+            $Team.empty();
+            $.each(vals, function(index, value) { $Team.append("<option>" + value + "</option>"); });
+        });
+    });
+</script>
+<script>
+    $(function() {
+        var $dropdown = $(this);
+        $.getJSON("Score.json", function(data) {
+            var key = 'Score'; var vals = []; vals = data.Score.split(","); var $Score = $("#t3b");
+            $Score.empty();
+            $.each(vals, function(index, value) { $Score.append("<option>" + value + "</option>"); });
+        });
+    });
+</script>    
+</head>
+<title>Hanover Soccer - Score Reporter tool</title>
+</head>
+<body>
+	
+<div id="container">
+<h1>HYAA Score reporter</h1>
+<div id="menu">
+<div id="selector">
+<div id="lhs" style="float:left;">
+	
+<?php
+$N1 = $N2 = $N3 = $N4 = $S1 = $S2 = $T1 = $T2 = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+  if ("---" == ($_POST["T1"])) 
+  { $T1= "Hanover Team is required";		$N1=1;	} else { $T1 = test_input($_POST["T1"]); $N1=0; }
+  if ("---" == ($_POST["T2"])) 
+  { $T2= "Opposition Team is required";		$N2=1;  } else { $T2 = test_input($_POST["T2"]); $N2=0;}    
+  if ("---" == ($_POST["S1"])) 
+  { $S1= "Hanover Score is required";		$N3=1;	} else { $S1 = test_input($_POST["S1"]); $N3=0;}    
+  if ("---" == ($_POST["S2"])) 
+  { $S2 = "Opposition Score is required";	$N4=1;	} else { $S2 = test_input($_POST["S2"]); $N4=0;}
+}
+
+function test_input($data) 
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+<select id="t1a"><option selected value="Town">Town</option></select>
+<select id="t1b"><option>Please choose</option></select>
+<br>
+<select id="t2a"><option selected value="Team">Team</option></select>
+<select id="t2b"><option>Please choose</option></select>
+<br>
+<select id="t3a"><option selected value="Score">Score</option></select>
+<select id="t3b"><option>Please choose</option></select>
+<br>
+<!--
+<button type="submit" id="submit-form" class="GoButton">SEND SCORES</button></form>
+<br>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+	echo "<h3>" . $T1 . "," . $S1; echo "</h3>"; 
+	echo "<h3>" . $T2 . ", " . $S2; echo "</h3>"; 
+	$message = $T1 . "," . $S1."\r\n".$T2 . ", " . $S2."\r\n";
+	$message = wordwrap($message, 70, "\r\n");
+	if (($N1+$N2+$N3+$N4) < 1) {
+		echo "<br><font color='GREEN'>Report was sent to <font color='BLUE'><b>soccerhanover@gmail.com</b>";
+		echo "<br> <font color='GREEN'>Thanks Coach of team " . $T1 . "!!<br>";
+		mail('soccerhanover@gmail.com', $T1, $message);
+	} else {
+		echo "<br><font color='red'>Please fix missing data</font><br>";
+	}
+}
+?>
+-->
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+<!--
+Copyright 2022 Adrian Lewis
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
