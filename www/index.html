@@ -11,7 +11,7 @@
 <script>
     $(function() {
         var $dropdown = $(this);
-        $.getJSON("Town.json", function(data) {
+        $.getJSON("data/Town.json", function(data) {
             var key = 'Town'; var vals = []; vals = data.Town.split(","); var $Town = $("#t1b");
             $Town.empty();
             $.each(vals, function(index, value) {$Town.append("<option>" + value + "</option>");});
@@ -21,7 +21,7 @@
 <script>
     $(function() {
         var $dropdown = $(this);
-        $.getJSON("Team.json", function(data) {
+        $.getJSON("data/Team.json", function(data) {
             var key = 'Team';var vals = [];vals = data.Team.split(","); var $Team = $("#t2b");
             $Team.empty();
             $.each(vals, function(index, value) { $Team.append("<option>" + value + "</option>"); });
@@ -31,7 +31,7 @@
 <script>
     $(function() {
         var $dropdown = $(this);
-        $.getJSON("Score.json", function(data) {
+        $.getJSON("data/Score.json", function(data) {
             var key = 'Score'; var vals = []; vals = data.Score.split(","); var $Score = $("#t3b");
             $Score.empty();
             $.each(vals, function(index, value) { $Score.append("<option>" + value + "</option>"); });
