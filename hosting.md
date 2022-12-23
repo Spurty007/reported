@@ -14,14 +14,13 @@ Your /var/www/html should look like so:
 
  <pre>
 # cd /var/www/html
-# find .
-.
-./i/bg.gif
-./i/hhawks.gif
-./i/style.css
-./index.php
-./index.html
- </pre>
+# find . -type f | sort
+./data/Score.json
+./data/Team.json
+./data/Town.json
+./css/style.css
+./index.html  
+</pre>
 
 ## Configure webservice
 
