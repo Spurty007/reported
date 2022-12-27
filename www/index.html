@@ -8,6 +8,14 @@
 <link rel="stylesheet" href="css/style.css">
 <meta charset='UTF-8'>
 <title>Hanover Soccer - Score Reporter tool</title>
+<script>
+    function validateForm() {
+        if (document.forms["hyaa"]["T1"].value == "") { alert("Town name must be filled out"); return false; }
+        if (document.forms["hyaa"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
+        if (document.forms["hyaa"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
+        if (document.forms["hyaa"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
+    }
+</script>
 <!-- TO DO REFACTOR - should just be a 'for loop' and not 4 scripts -->
 <script>
     $(function() {
@@ -59,11 +67,14 @@
 <div id="lhs" style="float:left;">
 
 <div style="overflow-x: auto;">
+    <form name="hyaa" action="." onsubmit="return validateForm()" method="post">
 	<table>
-		<tr><th>Team</th><th>Score</th></tr>
+        <tr><th>Team</th><th>Score</th></tr>
 		<tr><td><select id="T1"><option>Town</option></select></td><td><select id="S1"><option>Score</option></select></tr>
 		<tr><td><select id="T2"><option>Team</option></select></td><td><select id="S2"><option>Score</option></select></tr>
+        <tr><td><input type="submit" value="Submit"></td></tr>
 	</table>
+</form>
 </div>
 </div>
 </div>
