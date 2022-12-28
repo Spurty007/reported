@@ -14,6 +14,9 @@
         if (document.forms["hyaa"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
         if (document.forms["hyaa"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
         if (document.forms["hyaa"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
+        var message="";
+        message='{"' + document.forms["hyaa"]["T2"].value + '":"' + document.forms["hyaa"]["S2"].value + '"","' + document.forms["hyaa"]["T1"].value + '":"' + document.forms["hyaa"]["S1"].value + '"}';
+        document.getElementById("posted").innerHTML = message;
     }
 </script>
 <!-- TO DO REFACTOR - should just be a 'for loop' and not 4 scripts -->
@@ -75,6 +78,7 @@
         <tr><td><input type="submit" value="Submit"></td></tr>
 	</table>
 </form>
+<p id="posted"></p>
 </div>
 </div>
 </div>
