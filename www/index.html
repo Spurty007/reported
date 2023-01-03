@@ -20,6 +20,21 @@
         document.getElementById("posted").innerHTML = message;
     }
 </script>
+<!-- Refactor concept -->
+<script>
+    function Data() {
+        let jdata = [['Town','#T1'],['Team','#T2'],['Score','#S1'],['Score','#S2']];
+        jdata.forEach((jdata) => { 
+            let d='"data/' + jdata[0] + '.json"';
+            let t='"' + jdata[0] + '"';
+            let v='"' + jdata[1] + '"' ;
+            console.log(d + t + v);  
+        });
+    };
+</script>
+[> open the console to see this info ]
+<button type = "button" onclick="Data()">Console data</button>
+<!-- Refactor concept -->
 <!-- TO DO REFACTOR - should just be a 'for loop' and not 4 scripts -->
 <script>
     $(function() {
