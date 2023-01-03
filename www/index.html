@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="HYAA Soccer Score reporter" content="HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+<meta name="Soccer Score reporter">
 <meta content="user-scalable=no, width=device-width" name="viewport">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-latest.js" type="text/javascript"> </script>
 <link rel="stylesheet" href="css/style.css">
 <meta charset='UTF-8'>
-<title>Hanover Soccer - Score Reporter tool</title>
+<title>SSRT - Soccer Score Reporter Tool</title>
 <script>
     function validateForm() {
-        if (document.forms["hyaa"]["T1"].value == "") { alert("Town name must be filled out"); return false; }
-        if (document.forms["hyaa"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
-        if (document.forms["hyaa"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
-        if (document.forms["hyaa"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
-        var message="";
-        var timestamp=Date.now();
-        message='{"timestamp":"' + timestamp +'","' + document.forms["hyaa"]["T2"].value + '":"' + document.forms["hyaa"]["S2"].value + '","' + document.forms["hyaa"]["T1"].value + '":"' + document.forms["hyaa"]["S1"].value + '"}';
+        if (document.forms["ssrt"]["T1"].value == "") { alert("Town name must be filled out"); return false; }
+        if (document.forms["ssrt"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
+        if (document.forms["ssrt"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
+        if (document.forms["ssrt"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
+        const date = new Date();
+        var message='{"timestamp":"' + date.toLocaleString() +'","' + document.forms["ssrt"]["T2"].value + '":"' + document.forms["ssrt"]["S2"].value + '","' + document.forms["ssrt"]["T1"].value + '":"' + document.forms["ssrt"]["S1"].value + '"}';
         document.getElementById("posted").innerHTML = message;
     }
 </script>
@@ -25,10 +24,8 @@
     function Data() {
         let jdata = [['Town','#T1'],['Team','#T2'],['Score','#S1'],['Score','#S2']];
         jdata.forEach((jdata) => { 
-            let d='"data/' + jdata[0] + '.json"';
-            let t='"' + jdata[0] + '"';
-            let v='"' + jdata[1] + '"' ;
-            console.log(d + t + v);  
+            let chunk='$(function() {var $dropdown = $(this); $.getJSON("data/'+jdata[0]+'.json", function(data) {var key = \''+jdata[0]+'\'; var vals = []; vals = data.'+jdata[0]+'.split(","); var $'+jdata[0]+' = $("'+jdata[1]+'");$'+jdata[0]+'.empty();$.each(vals, function(index, value) {$'+jdata[0]+'.append("<option>" + value + "</option>");});});}';
+            console.log(chunk);
         });
     };
 </script>
@@ -80,13 +77,13 @@
 <body>
 	
 <div id="container">
-<h1>HYAA Score reporter</h1>
+<h1>Score reporter</h1>
 <div id="menu">
 <div id="selector">
 <div id="lhs" style="float:left;">
 
 <div style="overflow-x: auto;">
-    <form name="hyaa" >
+    <form name="ssrt" >
     <table>
         <tr><th>Team</th><th>Score</th></tr>
 		<tr><td><select id="T1"><option>Town</option></select></td><td><select id="S1"><option>Score</option></select></tr>
