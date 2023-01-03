@@ -70,14 +70,14 @@
 <div id="lhs" style="float:left;">
 
 <div style="overflow-x: auto;">
-    <form name="hyaa" action="." onsubmit="return validateForm()" method="post">
-	<table>
+    <form name="hyaa" >
+    <table>
         <tr><th>Team</th><th>Score</th></tr>
 		<tr><td><select id="T1"><option>Town</option></select></td><td><select id="S1"><option>Score</option></select></tr>
 		<tr><td><select id="T2"><option>Team</option></select></td><td><select id="S2"><option>Score</option></select></tr>
-        <tr><td><input type="submit" value="Submit"></td></tr>
-	</table>
-</form>
+        <tr><td><button type = "button" onclick="validateForm()">Mail in scores</button></td></tr>
+    </table>  
+    </form> 
 <p id="posted"></p>
 </div>
 </div>
