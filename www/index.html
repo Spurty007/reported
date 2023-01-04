@@ -15,7 +15,9 @@
         if (document.forms["ssrt"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
         if (document.forms["ssrt"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
         const date = new Date();
-        var message='{"timestamp":"' + date.toLocaleString() +'","' + document.forms["ssrt"]["T2"].value + '":"' + document.forms["ssrt"]["S2"].value + '","' + document.forms["ssrt"]["T1"].value + '":"' + document.forms["ssrt"]["S1"].value + '"}';
+        var logiday=date.getFullYear() + '-' + date.getMonth() + '-' +date.getDate();
+        var logitime=date.getHours() + ':' + date.getMinutes() + ':' +date.getSeconds();
+        var message='{"Time":"'+logitime+'","Day":"'+ logiday +'","' + document.forms["ssrt"]["T2"].value + '":"' + document.forms["ssrt"]["S2"].value + '","' + document.forms["ssrt"]["T1"].value + '":"' + document.forms["ssrt"]["S1"].value + '"}';
         document.getElementById("posted").innerHTML = message;
     }
 </script>
@@ -85,10 +87,10 @@
 <div style="overflow-x: auto;">
     <form name="ssrt" >
         <table>
-            <tr><th>Team</th><th>Score</th></tr>
-            <tr><td><select id="T1"><option>Town</option></select></td><td><select id="S1"><option>Score</option></select></tr>
-            <tr><td><select id="T2"><option>Team</option></select></td><td><select id="S2"><option>Score</option></select></tr>
-            <tr><td><button type = "button" onclick="validateForm()">Mail in scores</button></td></tr>
+            <tr><th>Note</th><th>Team</th><th>Score</th></tr>
+            <tr><td>Opponent</td><td><select id="T1"><option>Town</option></select></td><td><select id="S1"><option>Score</option></select></tr>
+            <tr><td>Home Team</td><td><select id="T2"><option>Team</option></select></td><td><select id="S2"><option>Score</option></select></tr>
+            <tr><td colspan="3"><button type = "button" onclick="validateForm()">Mail in scores</button></td></tr>
         </table>  
     </form> 
 <p id="posted"></p>
