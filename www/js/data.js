@@ -2,10 +2,10 @@ function Data() {
     let update="";
     let jdata = [['Town','#T1'],['Team','#T2'],['Score','#S1'],['Score','#S2']];
     jdata.forEach((jdata) => { 
-        let chunk='<script>$(function() {var $dropdown = $(this); $.getJSON("data/'+jdata[0]+'.json", function(data) {var key = \''+jdata[0]+'\'; var vals = []; vals = data.'+jdata[0]+'.split(","); var $'+jdata[0]+' = $("'+jdata[1]+'");$'+jdata[0]+'.empty();$.each(vals, function(index, value) {$'+jdata[0]+'.append("<option>" + value + "<\/option>");});});}</script>';
+        let chunk='<script>$(function() {var $dropdown = $(this); $.getJSON("data/'+jdata[0]+'.json", function(data) {var key = \''+jdata[0]+'\'; var vals = []; vals = data.'+jdata[0]+'.split(","); var $'+jdata[0]+' = $("'+jdata[1]+'");$'+jdata[0]+'.empty();$.each(vals, function(index, value) {$'+jdata[0]+'.append("<option>" + value + "<\/option>");});});})</script>';
         update=update+chunk;
     });
-    $( "#Refactor" ).replaceWith( update ); // page renders before update
+    $("#Refactor").replaceWith(update);
 }
 
 function Validate() {
