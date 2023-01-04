@@ -18,4 +18,12 @@ function Validate() {
     var logitime=date.getHours() + ':' + date.getMinutes() + ':' +date.getSeconds();
     var message='{"Time":"'+logitime+'","Day":"'+ logiday +'","' + document.forms["ssrt"]["T2"].value + '":"' + document.forms["ssrt"]["S2"].value + '","' + document.forms["ssrt"]["T1"].value + '":"' + document.forms["ssrt"]["S1"].value + '"}';
     document.getElementById("posted").innerHTML = message;
+    SendToStatistician(message);
+}
+
+function SendToStatistician(body) {
+    const content=JSON.parse(body);
+    console.log('Mail sent on '+ content.Day + '@'+ content.Time);  
+    console.log(body);
+    console.log(JSON.stringify(body));
 }
