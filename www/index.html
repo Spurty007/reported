@@ -9,64 +9,14 @@
 <link rel="stylesheet" href="css/style.css">
 <meta charset='UTF-8'>
 <title>SSRT - Soccer Score Reporter Tool</title>
-<!-- Refactor concept -->
-[> open the console to see this info 
-<button type = "button" onclick="Data()">Console data</button>
-Should be onload]
-<p id="Refactor"></p>	
-<!-- END Refactor concept -->
-<!-- TO DO REFACTOR - should just be a 'for loop' and not 4 scripts -->
-
-<script>
-    $(function() {
-        var $dropdown = $(this);
-        $.getJSON("data/Town.json", function(data) {
-            var key = 'Town'; var vals = []; vals = data.Town.split(","); var $Town = $("#T1");
-            $Town.empty();
-            $.each(vals, function(index, value) {$Town.append("<option>" + value + "</option>");});
-        });
-    });
-</script>
-<script>
-    $(function() {
-        var $dropdown = $(this);
-        $.getJSON("data/Team.json", function(data) {
-            var key = 'Team';var vals = [];vals = data.Team.split(","); var $Team = $("#T2");
-            $Team.empty();
-            $.each(vals, function(index, value) { $Team.append("<option>" + value + "</option>"); });
-        });
-    });
-</script>
-<script>
-    $(function() {
-        var $dropdown = $(this);
-        $.getJSON("data/Score.json", function(data) {
-            var key = 'Score'; var vals = []; vals = data.Score.split(","); var $Score = $("#S1");
-            $Score.empty();
-            $.each(vals, function(index, value) { $Score.append("<option>" + value + "</option>"); });
-        });
-    });
-</script>    
-<script>
-    $(function() {
-        var $dropdown = $(this);
-        $.getJSON("data/Score.json", function(data) {
-            var key = 'Score'; var vals = []; vals = data.Score.split(","); var $Score = $("#S2");
-            $Score.empty();
-            $.each(vals, function(index, value) { $Score.append("<option>" + value + "</option>"); });
-        });
-    });
-</script>
 </head>
-
-<body>
-
+<body onload="Data()">
+<p id="Refactor"></p>
 <div id="container">
 <h1>Score reporter</h1>
 <div id="menu">
 <div id="selector">
 <div id="lhs" style="float:left;">
-
 <div style="overflow-x: auto;">
     <form name="ssrt" >
         <table>
