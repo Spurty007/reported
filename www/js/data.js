@@ -16,14 +16,24 @@ function Validate() {
     const date = new Date();
     var logiday=date.getFullYear() + '-' + date.getMonth() + '-' +date.getDate();
     var logitime=date.getHours() + ':' + date.getMinutes() + ':' +date.getSeconds();
-    var message='{"Time":"'+logitime+'","Day":"'+ logiday +'","' + document.forms["ssrt"]["T2"].value + '":"' + document.forms["ssrt"]["S2"].value + '","' + document.forms["ssrt"]["T1"].value + '":"' + document.forms["ssrt"]["S1"].value + '"}';
-    document.getElementById("posted").innerHTML = message;
-    SendToStatistician(message);
+    var obj={Time:logitime,Day:logiday};
+    obj[document.forms["ssrt"]["T1"].value] =  document.forms["ssrt"]["S1"].value;
+    obj[document.forms["ssrt"]["T2"].value] =  document.forms["ssrt"]["S2"].value;
+    document.getElementById("posted").innerHTML = "<pre>\n"+JSON.stringify((obj), undefined, 4)+"</pre>";
+    SendToStatistician(obj);
 }
 
-function SendToStatistician(body) {
-    const content=JSON.parse(body);
+function SendToStatistician(content) {
     console.log('Mail sent on '+ content.Day + '@'+ content.Time);  
-    console.log(body);
-    console.log(JSON.stringify(body));
+    var send = function(content, success) {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', success);
+        xhr.open("POST", "post.php");
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send(JSON.stringify(content));
+    };
+    send(content,function(){
+        console.log(this.responseText);
+    });
+
 }
