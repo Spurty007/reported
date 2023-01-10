@@ -13,10 +13,16 @@ function Validate() {
     if (document.forms["ssrt"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
     if (document.forms["ssrt"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
     if (document.forms["ssrt"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
+    var t1=document.forms["ssrt"]["T1"].value;
+    var t2=document.forms["ssrt"]["T2"].value;
+    var s1=document.forms["ssrt"]["S1"].value;
+    var s2=document.forms["ssrt"]["S2"].value;
     var obj={};
-    obj["Subject"] = document.forms["ssrt"]["T2"].value + " vs " + document.forms["ssrt"]["T1"].value;
-    obj["Report"] = document.forms["ssrt"]["T2"].value + ":" + document.forms["ssrt"]["S2"].value + "\n" + document.forms["ssrt"]["T1"].value + ":"+  document.forms["ssrt"]["S1"].value;
-    document.getElementById("posted").innerHTML = "<pre>\nReport was successfully mailed - thank you!</pre>";
+    obj["Subject"] = t2 + " vs " + t1;
+    obj["Report"] = t2 + ":" + s2 + "\n" + t1 + ":"+  s1;
+    document.getElementById("posted").innerHTML = "<pre>Report:\n" + 
+        t2 + ":" + s2 + " vs " + t1 + ":" +  s1 + 
+        "\nwas successfully mailed\nThank you!</pre>";
     SendToStatistician(obj);
 }
 
