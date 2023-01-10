@@ -1,6 +1,8 @@
 <?php
-    $request = file_get_contents("php://input"); // gets the raw data
-    $params = json_decode($request); // true for return as array
+    $request = file_get_contents("php://input");
+    $params = json_decode($request);
+    $subject=$params->Subject;
+    $report=$params->Report;
     $message = (string) $request;
-    mail('spurty@gmail.com', 'Subject:params', $message );
+    mail('spurty@gmail.com', $subject, $report );
 ?>

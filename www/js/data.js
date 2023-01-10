@@ -13,27 +13,23 @@ function Validate() {
     if (document.forms["ssrt"]["T2"].value == "") { alert("Team name must be filled out"); return false; }
     if (document.forms["ssrt"]["S1"].value == "") { alert("Score for Opponent not selected"); return false; }
     if (document.forms["ssrt"]["S2"].value == "") { alert("Score for Town not selected"); return false; }
-    const date = new Date();
-    var logiday=date.getFullYear() + '-' + date.getMonth() + '-' +date.getDate();
-    var logitime=date.getHours() + ':' + date.getMinutes() + ':' +date.getSeconds();
-    var obj={Time:logitime,Day:logiday};
-    obj[document.forms["ssrt"]["T1"].value] =  document.forms["ssrt"]["S1"].value;
-    obj[document.forms["ssrt"]["T2"].value] =  document.forms["ssrt"]["S2"].value;
-    document.getElementById("posted").innerHTML = "<pre>\n"+JSON.stringify((obj), undefined, 4)+"</pre>";
+    var obj={};
+    obj["Subject"] = document.forms["ssrt"]["T2"].value + " vs " + document.forms["ssrt"]["T1"].value;
+    obj["Report"] = document.forms["ssrt"]["T2"].value + ":" + document.forms["ssrt"]["S2"].value + "\n" + document.forms["ssrt"]["T1"].value + ":"+  document.forms["ssrt"]["S1"].value;
+    document.getElementById("posted").innerHTML = "<pre>\nReport was successfully mailed - thank you!</pre>";
     SendToStatistician(obj);
 }
 
 function SendToStatistician(content) {
-    console.log('Mail sent on '+ content.Day + '@'+ content.Time);  
     var send = function(content, success) {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', success);
         xhr.open("POST", "post.php");
         xhr.setRequestHeader('content-type', 'application/json');
         xhr.send(JSON.stringify(content));
-    };
+    };   
     send(content,function(){
-        console.log(this.responseText);
+        const form = document.forms["ssrt"];
+        form.reset();
     });
-
 }
