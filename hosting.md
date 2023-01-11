@@ -5,7 +5,7 @@ Access to a Google e-mail account is recommended (and what I configure in these 
 
 The following commandline is for a Ubuntu OS - please correct for your distro:
 <pre>
-# apt install nginx php-fpm postfix certbot
+# apt install nginx postfix certbot
 </pre>
 
 Once done, please clone this project and drop the reported/www contents into /var/www/html
@@ -14,14 +14,13 @@ Your /var/www/html should look like so:
 
  <pre>
 # cd /var/www/html
-# find .
-.
-./i/bg.gif
-./i/hhawks.gif
-./i/style.css
-./index.php
-./index.html
- </pre>
+# find . -type f | sort
+./data/Score.json
+./data/Team.json
+./data/Town.json
+./css/style.css
+./index.html  
+</pre>
 
 ## Configure webservice
 
@@ -59,10 +58,6 @@ server {
     # Certs
     ssl_certificate /etc/letsencrypt/live/FQDN/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/FQDN/privkey.pem;
-    location ~ \.php$ {
-        include fastcgi.conf;
-        fastcgi_pass unix:/var/run/php/php-fpm.sock;
-    }
 }
 </pre>
 
