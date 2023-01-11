@@ -12,6 +12,7 @@ function Data() {
         update=update+chunk;
     });
     $("#Refactor").replaceWith(update);
+    vp();
 }
 
 function Validate() {
@@ -44,4 +45,38 @@ function SendToStatistician(content) {
         const form = document.forms["ssrt"];
         form.reset();
     });
+}
+
+function vp()
+{
+    var vw;
+    var vh;
+
+    //Standards compliant browsers (mozilla/netscape/opera/IE7)
+    if (typeof window.innerWidth != 'undefined')
+    {
+        vw = window.innerWidth,
+        vh = window.innerHeight
+    }
+    /*
+    // IE6
+    else if (typeof document.documentElement != 'undefined'
+    && typeof document.documentElement.clientWidth !=
+    'undefined' && document.documentElement.clientWidth != 0)
+    {
+        vw = document.documentElement.clientWidth,
+        vh = document.documentElement.clientHeight
+    }
+
+    //Older IE
+    else
+    {
+        vw = document.getElementsByTagName('body')[0].clientWidth,
+        vh = document.getElementsByTagName('body')[0].clientHeight
+    }
+    */
+    var vp=vw + "~" + vh;
+    $("#vp").replaceWith(vp);
+
+    return vw + "~" + vh;
 }
