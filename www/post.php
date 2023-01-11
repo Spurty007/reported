@@ -3,5 +3,5 @@
     $params = json_decode($request);
     $subject=$params->Subject;
     $report=$params->Report;
-    mail('spurty@gmail.com', $subject, $report );
+    mail('YOUREMAILADDRESSHERE', $subject, $report );
 ?>
