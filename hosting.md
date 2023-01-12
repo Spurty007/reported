@@ -39,6 +39,10 @@ server {
     index index.html index.htm index.nginx-debian.html;
     access_log /var/log/nginx/ssl-FQDN-access.log;
     error_log /var/log/nginx/ssl-FQDN-error.log;
+    location ~ \.php$ {
+        include fastcgi.conf;
+        fastcgi_pass unix:/var/run/php/php-fpm.sock;
+    }
 }
 </pre>
 
