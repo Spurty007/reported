@@ -27,9 +27,7 @@ function Validate() {
     var obj={};
     obj["Subject"] = t1 + " vs " + t2;
     obj["Report"] = t1 + ":" + s1 + "\n" + t2 + ":"+  s2;
-    document.getElementById("posted").innerHTML = "<pre>Report:\n" + 
-        t1 + ":" + s1 + " vs " + t2 + ":" +  s2 + 
-        "\nwas successfully mailed\nThank you!</pre>";
+    document.getElementById("posted").innerHTML = "Report Sent:<h3>" + t1 + ":" + s1 + "," + t2 + ":" +  s2 + "</h3>Thank you!";
     SendToStatistician(obj);
 }
 
@@ -51,32 +49,7 @@ function vp()
 {
     var vw;
     var vh;
-
-    //Standards compliant browsers (mozilla/netscape/opera/IE7)
-    if (typeof window.innerWidth != 'undefined')
-    {
-        vw = window.innerWidth,
-        vh = window.innerHeight
-    }
-    /*
-    // IE6
-    else if (typeof document.documentElement != 'undefined'
-    && typeof document.documentElement.clientWidth !=
-    'undefined' && document.documentElement.clientWidth != 0)
-    {
-        vw = document.documentElement.clientWidth,
-        vh = document.documentElement.clientHeight
-    }
-
-    //Older IE
-    else
-    {
-        vw = document.getElementsByTagName('body')[0].clientWidth,
-        vh = document.getElementsByTagName('body')[0].clientHeight
-    }
-    */
-    var vp=vw + "~" + vh;
+    if (typeof window.innerWidth != 'undefined') { vw = window.innerWidth, vh = window.innerHeight }
+    var vp=vw + " x " + vh;
     $("#vp").replaceWith(vp);
-
-    return vw + "~" + vh;
 }

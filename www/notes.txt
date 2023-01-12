@@ -1,0 +1,21 @@
+Game format Cheat sheet:
+===============================================
+Grade - Ball   - Fielded - max roster - Halves
+ 3/4  - size 4 -  7v7    - 13 players - 30mins
+ 5/6  - size 4 -  9v9    - 16 players - 30mins
+ 7/8  - size 5 - 11v11   - 22 players - 35mins
+ 9/10 - size 5 - 11v11   - 25 players - 40mins
+11/12 - size 5 - 11v11   - 25 players - 40mins
+
+Sub only if ref allows:
+- Throw in
+- before goal kick
+- after goal
+- after injury
+- at 1/2 time
+
+Town             Kit Colors
+===============================================
+
+
+In case of color clash, home team wears pinnies
