@@ -8,7 +8,7 @@ Please review [hosting.md](hosting.md) as a guide for self hosting
 The only files you should ever need to edit are:
    * [Team.json](www/data/Team.json) - to reflect your teams
    * [post.php](www/post.php) - to post scores to your statistician
-   * [Town.json](www/data/Town.json) - only your from a different league
+   * [Town.json](www/data/Town.json) - only if you're from a different league
    
 ## Help
 
