@@ -12,4 +12,4 @@ The only files you should ever need to edit are:
    
 ## Help
 
-I'm not selling this - its free software - if you get stuck, feel free to ask for help, however I can't give any indication of my level of awareness of your problems as I do not check GitHub daily.
+If you get stuck, feel free to ask for help, however I can't give any indication of my level of awareness of your problems as I do not check GitHub daily.
